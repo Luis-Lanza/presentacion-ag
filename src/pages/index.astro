@@ -65,6 +65,7 @@ const practices = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f5f4f0" />
+    <link rel="icon" type="image/jpeg" href="/assets/brand/ag-consulting-logo.jpeg" />
     <title>{title}</title>
   </head>
   <body>
@@ -73,6 +74,7 @@ const practices = [
     </header>
     <main>
       <section class="opening section-shell" aria-labelledby="opening-title">
+        <div class="editorial-frame opening-frame">
         <div class="opening-copy">
           <p class="eyebrow">Presentación de asesoramiento</p>
           <h1 id="opening-title">CONSULTING</h1>
@@ -81,10 +83,12 @@ const practices = [
         <div class="opening-art">
           <img src="/assets/illustrations/hero.png" alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
         </div>
+        </div>
         <span class="section-index" aria-hidden="true">01 / 07</span>
       </section>
 
       <section class="identity section-shell" aria-labelledby="identity-title">
+        <div class="editorial-frame identity-frame">
         <div class="section-heading">
           <p class="eyebrow">01 — Identidad</p>
           <h2 id="identity-title">¿Quiénes somos?</h2>
@@ -99,10 +103,12 @@ const practices = [
           </ul>
           <p class="identity-ending">Cambios sustentables en las empresas.</p>
         </div>
+        </div>
         <span class="section-index" aria-hidden="true">02 / 07</span>
       </section>
 
       <section class="what section-shell" aria-labelledby="what-title">
+        <div class="editorial-frame what-frame">
         <div class="section-heading">
           <p class="eyebrow">02 — Nuestro trabajo</p>
           <h2 id="what-title">¿Qué hacemos?</h2>
@@ -115,20 +121,24 @@ const practices = [
           </ul>
           <p class="supporting-copy">A través de un enfoque sistemático en los valores del cliente.</p>
         </div>
+        </div>
         <div class="shape-mark" aria-hidden="true"><span></span><span></span><span></span></div>
         <span class="section-index" aria-hidden="true">03 / 07</span>
       </section>
 
       <section class="approach section-shell" aria-labelledby="approach-title">
+        <div class="editorial-frame approach-frame">
         <div class="section-heading">
           <p class="eyebrow">03 — Enfoque</p>
           <h2 id="approach-title">¿Cómo lo hacemos?</h2>
         </div>
         <p class="approach-copy">Sintonizando las metas, políticas y procesos, la cultura organizacional y ventas con la experiencia del cliente.</p>
+        </div>
         <span class="section-index" aria-hidden="true">04 / 07</span>
       </section>
 
       <section class="practices section-shell" aria-labelledby="practices-title">
+        <div class="editorial-frame practices-frame">
         <div class="section-heading practices-heading">
           <p class="eyebrow">04 — Áreas de trabajo</p>
           <h2 id="practices-title">Prácticas de Consultoría</h2>
@@ -146,19 +156,23 @@ const practices = [
             </article>
           ))}
         </div>
+        </div>
         <span class="section-index" aria-hidden="true">05 / 07</span>
       </section>
 
       <section class="purpose section-shell" aria-labelledby="purpose-title">
+        <div class="editorial-frame purpose-frame">
         <div class="section-heading">
           <p class="eyebrow">05 — Propósito</p>
           <h2 id="purpose-title">¿Por qué lo hacemos?</h2>
         </div>
         <p class="purpose-copy">Porque creemos que la rentabilidad indica el valor que la empresa entrega a la sociedad.</p>
+        </div>
         <span class="section-index" aria-hidden="true">06 / 07</span>
       </section>
 
       <section class="closing section-shell" aria-labelledby="closing-title">
+        <div class="editorial-frame closing-frame">
         <div class="closing-copy">
           <p class="eyebrow">Contacto</p>
           <h2 id="closing-title">GRACIAS</h2>
@@ -169,6 +183,7 @@ const practices = [
         </div>
         <div class="closing-art">
           <img src="/assets/illustrations/closing.png" alt="Escalinata arquitectónica con un recorrido rojo ascendente" loading="lazy" />
+        </div>
         </div>
         <span class="section-index" aria-hidden="true">07 / 07</span>
       </section>
@@ -201,10 +216,24 @@ const practices = [
         const heroCopy = document.querySelector('.opening-copy');
         const heroArtwork = document.querySelector('.opening-art');
         const revealTargets = gsap.utils.toArray(
-          '.identity .section-heading, .identity-content, .what .section-heading, .what-content, .approach .section-heading, .approach-copy, .practices-heading, .practice-card, .purpose .section-heading, .purpose-copy, .closing-copy, .closing-art',
+          '.identity-content, .what-content, .approach-copy, .purpose-copy, .closing-copy, .closing-art',
         );
+        const headingGroups = gsap.utils.toArray('main h1, main h2').map((heading) => {
+          const label = heading.textContent.trim();
+          heading.setAttribute('aria-label', label);
+          heading.innerHTML = label
+            .split(/\s+/)
+            .map((word) => `<span aria-hidden="true">${word}</span>`)
+            .join(' ');
+          return { heading, words: gsap.utils.toArray('span', heading) };
+        });
+        const headingWords = headingGroups.flatMap(({ words }) => words);
+        const practiceCards = gsap.utils.toArray('.practice-card');
+        const practiceIcons = gsap.utils.toArray('.practice-card-heading img');
 
-        gsap.set([headerLogo, ...revealTargets], { autoAlpha: 0 });
+        gsap.set([headerLogo, ...revealTargets, ...practiceCards], { autoAlpha: 0 });
+        gsap.set(headingWords, { autoAlpha: 0, y: 10 });
+        gsap.set(practiceIcons, { autoAlpha: 0, y: 8, scale: 0.94 });
         gsap.set([heroCopy, heroArtwork], { autoAlpha: 0, y: 14 });
 
         gsap.to([heroCopy, heroArtwork], {
@@ -227,6 +256,21 @@ const practices = [
           },
         });
 
+        headingGroups.forEach(({ heading, words }) => {
+          gsap.to(words, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.42,
+            ease: 'power2.out',
+            stagger: 0.055,
+            scrollTrigger: {
+              trigger: heading,
+              start: 'top 88%',
+              once: true,
+            },
+          });
+        });
+
         revealTargets.forEach((target) => {
           gsap.to(target, {
             autoAlpha: 1,
@@ -237,6 +281,75 @@ const practices = [
               trigger: target,
               start: 'top 88%',
               once: true,
+            },
+          });
+        });
+
+        gsap.to(practiceCards, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          ease: 'power2.out',
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.practice-grid',
+            start: 'top 88%',
+            once: true,
+          },
+        });
+
+        gsap.to(practiceIcons, {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          ease: 'power2.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '.practice-grid',
+            start: 'top 88%',
+            once: true,
+          },
+        });
+
+        const snapMedia = gsap.matchMedia();
+        snapMedia.add('(min-width: 760px)', () => {
+          const narrativePanels = gsap.utils.toArray(
+            '.opening, .identity, .what, .approach, .purpose, .closing',
+          );
+          const practices = document.querySelector('.practices');
+          const proximity = 220;
+
+          ScrollTrigger.create({
+            trigger: document.body,
+            start: 'top top',
+            end: 'max',
+            snap: {
+              snapTo: (progress, self) => {
+                const maxScroll = ScrollTrigger.maxScroll(window);
+                const projectedScroll = progress * maxScroll;
+                const practicesStart = practices.getBoundingClientRect().top + window.scrollY;
+                const practicesEnd = practicesStart + practices.offsetHeight;
+
+                if (projectedScroll >= practicesStart && projectedScroll <= practicesEnd) {
+                  return progress;
+                }
+
+                const nearestPanelStart = narrativePanels.reduce((nearest, panel) => {
+                  const panelStart = panel.getBoundingClientRect().top + window.scrollY;
+                  return Math.abs(panelStart - projectedScroll) < Math.abs(nearest - projectedScroll)
+                    ? panelStart
+                    : nearest;
+                }, Number.POSITIVE_INFINITY);
+
+                return Math.abs(nearestPanelStart - projectedScroll) <= proximity
+                  ? nearestPanelStart / maxScroll
+                  : progress;
+              },
+              delay: 0.12,
+              duration: { min: 0.15, max: 0.35 },
+              ease: 'power1.out',
+              inertia: false,
             },
           });
         });

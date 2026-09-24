@@ -25,8 +25,8 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
 
 - [x] **2. Build the presentation content** — completed
-  - Route: inline CSS correction, then independent verification.
-  - Evidence: desktop identity, what, approach, purpose, and closing panels measured 100svh and centered their content at 1440×900. Practices measured 1,146px from its content. At 390×844, the existing mobile minimums remain without the new 100svh rule; content is readable with no overflow. Build and bounded Chromium/CDP visual verification passed.
+  - Route: inline CSS panel-presence correction, then independent verification.
+  - Evidence: at 1440×900, 04 now measures 900px like identity/approach/purpose; its frame shares their 70rem bounds and content is centered within 0.01px. All cards/bullets/icons are readable with no overflow. At 390×844, mobile remains natural-height/block layout. Build and Chromium/CDP visual verification passed.
   - Commit: pending correction commit.
 
 - [x] **3. Add motion and verify** — completed
@@ -58,6 +58,12 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
 - 2026-09-24: Final bounded Chromium/CDP verification passed normal motion, reduced motion, no-JS content visibility, and build. Task 3 is accepted.
 - 2026-09-24: User requested a desktop full-screen rhythm correction: narrative sections must fill the viewport while practices remains naturally taller and mobile remains flexible.
 - 2026-09-24: The desktop correction passed bounded Chromium/CDP verification. Narrative panels measure 100svh; practices stays content-driven; mobile retains its existing flexible minimums without overflow.
+- 2026-09-24: User authorized a desktop-only `proximity` scroll-snap experiment for narrative panels, excluding the tall practices section and mobile.
+- 2026-09-24: CSS `proximity` and `mandatory` experiments did not reliably settle wheel scrolling into narrative panels; the mandatory experiment left a temporary Chromium process that was cleaned up.
+- 2026-09-24: User selected a desktop-only GSAP soft snap near narrative panels, excluding practices and mobile.
+- 2026-09-24: Independent Chromium/CDP runtime verification passed: near-panel desktop soft snap works, far positions and practices remain free, and mobile/reduced-motion are unaffected.
+- 2026-09-24: Manual review found the 90px snap threshold and block-level entrances too subtle. User authorized a stronger-but-restrained editorial motion trial.
+- 2026-09-24: Refined GSAP soft snap and per-element staggers passed desktop runtime verification. Added local logo favicon; build passes and the `/favicon.ico` 404 is eliminated.
 
 ## Next step
-Commit the verified desktop rhythm correction and restart the local preview server.
+User manually reviews the refined motion through the SSH tunnel; commit or adjust only after feedback.

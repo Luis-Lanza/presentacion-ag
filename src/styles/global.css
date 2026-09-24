@@ -58,19 +58,19 @@ main {
 .motion-enabled .header-logo,
 .motion-enabled .opening-copy,
 .motion-enabled .opening-art,
-.motion-enabled .identity .section-heading,
 .motion-enabled .identity-content,
-.motion-enabled .what .section-heading,
 .motion-enabled .what-content,
-.motion-enabled .approach .section-heading,
 .motion-enabled .approach-copy,
-.motion-enabled .practices-heading,
 .motion-enabled .practice-card,
-.motion-enabled .purpose .section-heading,
 .motion-enabled .purpose-copy,
 .motion-enabled .closing-copy,
 .motion-enabled .closing-art {
   visibility: hidden;
+}
+
+.motion-enabled main h1 > span,
+.motion-enabled main h2 > span {
+  display: inline-block;
 }
 
 img,
@@ -95,16 +95,22 @@ a:focus-visible {
   padding: clamp(5rem, 10vw, 9rem) var(--gutter);
 }
 
+.editorial-frame {
+  width: min(100%, 70rem);
+  margin: auto;
+}
+
 .opening {
-  display: grid;
   min-height: min(800px, 100svh);
   min-height: min(800px, 100vh);
+  background: var(--paper);
+}
+
+.opening-frame {
+  display: grid;
   align-items: center;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  padding-top: 4rem;
-  padding-bottom: 5rem;
-  background: var(--paper);
 }
 
 .opening-copy {
@@ -152,7 +158,6 @@ h3 {
 .opening-art {
   align-self: stretch;
   min-height: 220px;
-  margin-right: calc(var(--gutter) * -1);
   overflow: hidden;
   background: #fff;
 }
@@ -181,10 +186,14 @@ h3 {
 
 .identity,
 .purpose {
+  background: var(--white);
+}
+
+.identity-frame,
+.purpose-frame {
   display: grid;
   align-content: center;
   gap: 2.5rem;
-  background: var(--white);
 }
 
 .section-heading h2 {
@@ -237,10 +246,13 @@ h3 {
 }
 
 .what {
+  background: #ecebe6;
+}
+
+.what-frame {
   display: grid;
   align-content: center;
   gap: 2rem;
-  background: #ecebe6;
 }
 
 .what .section-heading h2 {
@@ -283,11 +295,14 @@ h3 {
 .shape-mark span:nth-child(3) { height: 43%; background: #aaa9a3; }
 
 .approach {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.approach-frame {
   display: grid;
   align-content: center;
   gap: 3rem;
-  color: var(--white);
-  background: var(--ink);
 }
 
 .approach .eyebrow { color: #ff777b; }
@@ -373,8 +388,11 @@ h3 {
 }
 
 .purpose {
-  gap: 2rem;
   background: #e9e8e2;
+}
+
+.purpose-frame {
+  gap: 2rem;
 }
 
 .purpose-copy {
@@ -384,13 +402,16 @@ h3 {
 }
 
 .closing {
-  display: grid;
   min-height: 85vh;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.closing-frame {
+  display: grid;
   align-items: center;
   grid-template-columns: 1fr;
   gap: 3rem;
-  color: var(--white);
-  background: var(--ink);
 }
 
 .closing .eyebrow { color: #ff777b; }
@@ -442,29 +463,37 @@ h3 {
     min-height: 100svh;
   }
 
+  .practices {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+  }
+
   .opening {
     min-height: min(900px, 100vh);
+  }
+
+  .opening-frame {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 4vw;
   }
 
   .opening-art {
     height: min(70vh, 620px);
-    margin-right: calc(var(--gutter) * -1);
   }
 
   .opening-art img { min-height: 100%; }
   .opening h1 { font-size: clamp(3.4rem, 6vw, 5.5rem); }
   .shape-mark { right: 2rem; bottom: 5rem; width: 6rem; height: 6rem; }
 
-  .identity {
+  .identity-frame {
     grid-template-columns: 0.9fr 1.1fr;
     align-items: center;
     gap: 4rem;
   }
 
   .identity-content { max-width: 38rem; }
-  .what {
+  .what-frame {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 3rem;
@@ -472,16 +501,30 @@ h3 {
 
   .what-content { position: relative; z-index: 1; }
   .shape-mark { right: 10%; bottom: 14%; width: 12rem; height: 12rem; }
-  .approach { grid-template-columns: 0.8fr 1.2fr; align-items: center; gap: 5vw; }
+  .approach-frame { grid-template-columns: 0.8fr 1.2fr; align-items: center; gap: 5vw; }
+
   .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
   .practice-card-wide { grid-column: 1 / -1; }
-  .purpose { grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: 4rem; }
-  .closing { grid-template-columns: 0.9fr 1.1fr; gap: 5vw; }
+  .purpose-frame { grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: 4rem; }
+  .closing-frame { grid-template-columns: 0.9fr 1.1fr; gap: 5vw; }
   .closing-art { min-height: 360px; height: min(60vh, 500px); }
   .closing-art img { min-height: 100%; }
 }
 
 @media (min-width: 1100px) {
+  .practices {
+    padding-top: clamp(3.5rem, 5vw, 5rem);
+    padding-bottom: 4rem;
+  }
+
+  .practices-heading { margin-bottom: 1.5rem; }
+  .practice-grid { gap: 0.85rem; }
+  .practice-card { padding: 1rem; }
+  .practice-card-heading { gap: 0.65rem; margin-bottom: 0.75rem; }
+  .practice-card-heading img { width: 2.25rem; height: 2.25rem; flex-basis: 2.25rem; }
+  .practice-card h3 { font-size: 1.05rem; }
+  .practice-card ul { gap: 0.4rem; font-size: 0.76rem; line-height: 1.4; }
+
   .practice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .practice-card-wide { grid-column: auto; }
   .practice-card:last-child { grid-column: span 2; }
