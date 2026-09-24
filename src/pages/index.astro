@@ -1,0 +1,246 @@
+---
+import '../styles/global.css';
+
+const title = 'CONSULTING';
+const description = 'Presentación de asesoramiento.';
+
+const practices = [
+  {
+    title: 'Liderazgo',
+    icon: '/assets/icons/leadership.png',
+    items: [
+      'Diseño del plan estrátegico de la empresa.',
+      'Gestión de cambio: Como afrontar cambios tecnológicos, de mercado, modelo de negocios, organizaciones, etc.',
+      'Desarrollo de líderes para enfrentar retos actuales y futuros.',
+    ],
+  },
+  {
+    title: 'Cultura Organizacional',
+    icon: '/assets/icons/organizational-culture.png',
+    items: [
+      'Compromiso del empleado: Involucramiento tanto en el trabajo como en los objetivos y valores de la empresa.',
+      'Gestion integral del talento de la organizacion.',
+      'Colaboración entre departamentos.',
+    ],
+  },
+  {
+    title: 'Optimización de Ventas',
+    icon: '/assets/icons/sales-optimization.png',
+    items: [
+      'Estudios de mercado.',
+      'Lanzamiento de nuevos productos.',
+      'Entrenamiento, ventas consultivas.',
+      'Metodologia de ventas (Embudo, CRM).',
+    ],
+  },
+  {
+    title: 'Gestión de la experiencia del cliente',
+    icon: '/assets/icons/customer-experience.png',
+    items: [
+      'Retención de clientes.',
+      'Crear fidelidad a través de los puntos de contacto con los clientes.',
+      'Desarrollar y establecer sociedades (partnerships).',
+    ],
+  },
+  {
+    title: 'Eficiencia operacional',
+    icon: '/assets/icons/operational-efficiency.png',
+    items: [
+      'Evaluación de la operatividad de la empresa.',
+      'Diagramas de procesos.',
+      'Analisis, diseño e implementación de procesos para mejorar la productividad.',
+      'Evaluacion de desperdicios.',
+      'Análisis FODA (Fortalezas, Oportunidades, Debilidades, Amenazas).',
+      'Métricas de gestión.',
+      'Creación de Tableros de Control.',
+    ],
+  },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f4f0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header" aria-label="AG Consulting">
+      <img class="header-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" hidden />
+    </header>
+    <main>
+      <section class="opening section-shell" aria-labelledby="opening-title">
+        <div class="opening-copy">
+          <p class="eyebrow">Presentación de asesoramiento</p>
+          <h1 id="opening-title">CONSULTING</h1>
+          <img class="opening-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" />
+        </div>
+        <div class="opening-art">
+          <img src="/assets/illustrations/hero.png" alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
+        </div>
+        <span class="section-index" aria-hidden="true">01 / 07</span>
+      </section>
+
+      <section class="identity section-shell" aria-labelledby="identity-title">
+        <div class="section-heading">
+          <p class="eyebrow">01 — Identidad</p>
+          <h2 id="identity-title">¿Quiénes somos?</h2>
+        </div>
+        <div class="identity-content">
+          <p class="lead">Somos profesionales en planeación estratégica que mediante distintas metodologías:</p>
+          <ul class="verb-list">
+            <li>Identificamos</li>
+            <li>Priorizamos</li>
+            <li>Diseñamos e</li>
+            <li>Implementamos</li>
+          </ul>
+          <p class="identity-ending">Cambios sustentables en las empresas.</p>
+        </div>
+        <span class="section-index" aria-hidden="true">02 / 07</span>
+      </section>
+
+      <section class="what section-shell" aria-labelledby="what-title">
+        <div class="section-heading">
+          <p class="eyebrow">02 — Nuestro trabajo</p>
+          <h2 id="what-title">¿Qué hacemos?</h2>
+        </div>
+        <div class="what-content">
+          <p class="lead">Ayudamos a empresas a:</p>
+          <ul class="growth-list">
+            <li>Crecer</li>
+            <li>Incrementar rentabilidad</li>
+          </ul>
+          <p class="supporting-copy">A través de un enfoque sistemático en los valores del cliente.</p>
+        </div>
+        <div class="shape-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <span class="section-index" aria-hidden="true">03 / 07</span>
+      </section>
+
+      <section class="approach section-shell" aria-labelledby="approach-title">
+        <div class="section-heading">
+          <p class="eyebrow">03 — Enfoque</p>
+          <h2 id="approach-title">¿Cómo lo hacemos?</h2>
+        </div>
+        <p class="approach-copy">Sintonizando las metas, políticas y procesos, la cultura organizacional y ventas con la experiencia del cliente.</p>
+        <span class="section-index" aria-hidden="true">04 / 07</span>
+      </section>
+
+      <section class="practices section-shell" aria-labelledby="practices-title">
+        <div class="section-heading practices-heading">
+          <p class="eyebrow">04 — Áreas de trabajo</p>
+          <h2 id="practices-title">Prácticas de Consultoría</h2>
+        </div>
+        <div class="practice-grid">
+          {practices.map((practice, index) => (
+            <article class:list={['practice-card', index === 4 && 'practice-card-wide']}>
+              <div class="practice-card-heading">
+                <img src={practice.icon} alt="" loading="lazy" />
+                <h3>{practice.title}</h3>
+              </div>
+              <ul>
+                {practice.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <span class="section-index" aria-hidden="true">05 / 07</span>
+      </section>
+
+      <section class="purpose section-shell" aria-labelledby="purpose-title">
+        <div class="section-heading">
+          <p class="eyebrow">05 — Propósito</p>
+          <h2 id="purpose-title">¿Por qué lo hacemos?</h2>
+        </div>
+        <p class="purpose-copy">Porque creemos que la rentabilidad indica el valor que la empresa entrega a la sociedad.</p>
+        <span class="section-index" aria-hidden="true">06 / 07</span>
+      </section>
+
+      <section class="closing section-shell" aria-labelledby="closing-title">
+        <div class="closing-copy">
+          <p class="eyebrow">Contacto</p>
+          <h2 id="closing-title">GRACIAS</h2>
+          <address>
+            <a href="mailto:miguel.oportoag@gmail.com">miguel.oportoag@gmail.com</a>
+            <a href="tel:+59178002275">+591 78002275</a>
+          </address>
+        </div>
+        <div class="closing-art">
+          <img src="/assets/illustrations/closing.png" alt="Escalinata arquitectónica con un recorrido rojo ascendente" loading="lazy" />
+        </div>
+        <span class="section-index" aria-hidden="true">07 / 07</span>
+      </section>
+    </main>
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (reduceMotion.matches) {
+        const headerLogo = document.querySelector('.header-logo');
+        const hero = document.querySelector('.opening');
+        const updateHeaderLogo = () => {
+          headerLogo.hidden = window.scrollY < hero.getBoundingClientRect().height;
+        };
+
+        updateHeaderLogo();
+        window.addEventListener('scroll', updateHeaderLogo, { passive: true });
+        window.addEventListener('resize', updateHeaderLogo);
+      } else {
+        const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+          import('gsap'),
+          import('gsap/ScrollTrigger'),
+        ]);
+
+        gsap.registerPlugin(ScrollTrigger);
+        document.documentElement.classList.add('motion-enabled');
+
+        const headerLogo = document.querySelector('.header-logo');
+        headerLogo.hidden = false;
+        const hero = document.querySelector('.opening');
+        const heroCopy = document.querySelector('.opening-copy');
+        const heroArtwork = document.querySelector('.opening-art');
+        const revealTargets = gsap.utils.toArray(
+          '.identity .section-heading, .identity-content, .what .section-heading, .what-content, .approach .section-heading, .approach-copy, .practices-heading, .practice-card, .purpose .section-heading, .purpose-copy, .closing-copy, .closing-art',
+        );
+
+        gsap.set([headerLogo, ...revealTargets], { autoAlpha: 0 });
+        gsap.set([heroCopy, heroArtwork], { autoAlpha: 0, y: 14 });
+
+        gsap.to([heroCopy, heroArtwork], {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: 0.12,
+        });
+
+        gsap.to(headerLogo, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.3,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'bottom top',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        revealTargets.forEach((target) => {
+          gsap.to(target, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.55,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: target,
+              start: 'top 88%',
+              once: true,
+            },
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
