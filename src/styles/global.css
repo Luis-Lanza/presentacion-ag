@@ -56,7 +56,6 @@ main {
 }
 
 .motion-enabled .header-logo,
-.motion-enabled .opening-copy,
 .motion-enabled .opening-art,
 .motion-enabled .identity-content,
 .motion-enabled .what-content,
@@ -152,6 +151,7 @@ h3 {
 
 .opening-logo {
   width: min(270px, 72%);
+  height: auto;
   mix-blend-mode: multiply;
 }
 

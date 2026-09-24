@@ -78,7 +78,7 @@ const practices = [
         <div class="opening-copy">
           <p class="eyebrow">Presentación de asesoramiento</p>
           <h1 id="opening-title">CONSULTING</h1>
-          <img class="opening-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" />
+          <img class="opening-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" width="1600" height="751" />
         </div>
         <div class="opening-art">
           <img src="/assets/illustrations/hero.png" alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
@@ -208,12 +208,12 @@ const practices = [
         ]);
 
         gsap.registerPlugin(ScrollTrigger);
-        document.documentElement.classList.add('motion-enabled');
-
         const headerLogo = document.querySelector('.header-logo');
         headerLogo.hidden = false;
         const hero = document.querySelector('.opening');
-        const heroCopy = document.querySelector('.opening-copy');
+        const heroEyebrow = document.querySelector('.opening .eyebrow');
+        const heroHeading = document.querySelector('.opening h1');
+        const heroLogo = document.querySelector('.opening-logo');
         const heroArtwork = document.querySelector('.opening-art');
         const revealTargets = gsap.utils.toArray(
           '.identity-content, .what-content, .approach-copy, .purpose-copy, .closing-copy, .closing-art',
@@ -230,19 +230,30 @@ const practices = [
         const headingWords = headingGroups.flatMap(({ words }) => words);
         const practiceCards = gsap.utils.toArray('.practice-card');
         const practiceIcons = gsap.utils.toArray('.practice-card-heading img');
+        const practiceTitles = gsap.utils.toArray('.practice-card-heading h3');
+        const practiceItems = gsap.utils.toArray('.practice-card li');
 
         gsap.set([headerLogo, ...revealTargets, ...practiceCards], { autoAlpha: 0 });
         gsap.set(headingWords, { autoAlpha: 0, y: 10 });
-        gsap.set(practiceIcons, { autoAlpha: 0, y: 8, scale: 0.94 });
-        gsap.set([heroCopy, heroArtwork], { autoAlpha: 0, y: 14 });
+        gsap.set([heroEyebrow, heroLogo, ...practiceTitles], { autoAlpha: 0, y: 8 });
+        gsap.set(practiceIcons, { autoAlpha: 0, y: 6, scale: 0.97 });
+        gsap.set(practiceItems, { autoAlpha: 0, y: 6 });
+        gsap.set(heroArtwork, { autoAlpha: 0, y: 12 });
+        document.documentElement.classList.add('motion-enabled');
 
-        gsap.to([heroCopy, heroArtwork], {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.7,
-          ease: 'power2.out',
-          stagger: 0.12,
+        const heroTimeline = gsap.timeline({
+          defaults: { ease: 'power3.out' },
         });
+        heroTimeline
+          .to(heroEyebrow, { autoAlpha: 1, y: 0, duration: 0.65 })
+          .to(headingGroups[0].words, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: { each: 0.08, amount: 0.24 },
+          }, '-=0.24')
+          .to(heroLogo, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.28')
+          .to(heroArtwork, { autoAlpha: 1, y: 0, duration: 0.85 }, '-=0.48');
 
         gsap.to(headerLogo, {
           autoAlpha: 1,
@@ -256,27 +267,29 @@ const practices = [
           },
         });
 
-        headingGroups.forEach(({ heading, words }) => {
+        headingGroups
+          .filter(({ heading }) => heading !== heroHeading)
+          .forEach(({ heading, words }) => {
           gsap.to(words, {
             autoAlpha: 1,
             y: 0,
-            duration: 0.42,
-            ease: 'power2.out',
-            stagger: 0.055,
+            duration: 0.75,
+            ease: 'power3.out',
+            stagger: { each: 0.055, amount: 0.22 },
             scrollTrigger: {
               trigger: heading,
               start: 'top 88%',
               once: true,
             },
           });
-        });
+          });
 
         revealTargets.forEach((target) => {
           gsap.to(target, {
             autoAlpha: 1,
             y: 0,
-            duration: 0.55,
-            ease: 'power2.out',
+            duration: 0.75,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: target,
               start: 'top 88%',
@@ -285,31 +298,55 @@ const practices = [
           });
         });
 
-        gsap.to(practiceCards, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.55,
-          ease: 'power2.out',
-          stagger: 0.1,
+        const practiceTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: '.practice-grid',
             start: 'top 88%',
             once: true,
           },
+          defaults: { ease: 'power3.out' },
         });
+        practiceTimeline
+          .to(practiceCards, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.75,
+            stagger: { each: 0.09, amount: 0.36 },
+          })
+          .to(practiceIcons, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: { each: 0.06, amount: 0.24 },
+          }, '-=0.55')
+          .to(practiceTitles, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: { each: 0.06, amount: 0.24 },
+          }, '-=0.58')
+          .to(practiceItems, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.65,
+            stagger: { each: 0.025, amount: 0.45 },
+          }, '-=0.5');
 
-        gsap.to(practiceIcons, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.45,
-          ease: 'power2.out',
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.practice-grid',
-            start: 'top 88%',
-            once: true,
-          },
+        const parallaxMedia = gsap.matchMedia();
+        parallaxMedia.add('(min-width: 760px)', () => {
+          gsap.utils.toArray('.opening-art img, .closing-art img').forEach((artwork) => {
+            gsap.to(artwork, {
+              y: 16,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: artwork.parentElement,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.6,
+              },
+            });
+          });
         });
 
         const snapMedia = gsap.matchMedia();

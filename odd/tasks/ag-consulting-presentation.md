@@ -27,15 +27,16 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
 - [x] **2. Build the presentation content** — completed
   - Route: inline CSS panel-presence correction, then independent verification.
   - Evidence: at 1440×900, 04 now measures 900px like identity/approach/purpose; its frame shares their 70rem bounds and content is centered within 0.01px. All cards/bullets/icons are readable with no overflow. At 390×844, mobile remains natural-height/block layout. Build and Chromium/CDP visual verification passed.
-  - Commit: pending correction commit.
+  - Commit: `9da51b1` — `feat: refine presentation interactions`.
 
 - [x] **3. Add motion and verify** — completed
   - Route: delegated direct (`gentle-ai-worker`, then verification as required by native assessment).
   - Add restrained GSAP/ScrollTrigger motion, header-logo behavior, reduced-motion fallback, and run project checks.
   - Checks: build succeeds; interactions and responsive behavior are inspected.
   - Evidence: independent desktop/mobile runtime verification confirmed normal motion, post-hero logo reveal, 18 visible entrance targets, no overflow, and successful build. Reduced-motion/no-JS verification found the header logo visually visible at the hero despite its `hidden` attribute because the global image display rule overrides it.
-  - Evidence: final bounded Chromium/CDP runtime verification passed. Normal motion keeps the logo visually hidden at top and visibly reveals it past the hero. Reduced motion keeps all content visible, runs no GSAP chunks or animations, and changes the logo visibility without animation. No-JS content stays immediately visible; the small header logo remains hidden because its scroll reveal requires JavaScript, while the large hero logo remains available.
-  - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
+  - Evidence: base motion and interaction behavior is verified. User authorized a second, motion-only iteration: more noticeable but smooth editorial hero sequencing, heading-word stagger, practice icon/card staging, and restrained illustration parallax. Preserve desktop snap, reduced motion, mobile behavior, and no-JS content visibility.
+  - Evidence: final Chromium/CDP verification passed. Hero timeline, heading/card/icon/list staggers, desktop parallax, and soft snap work without overflow or errors. The hero logo is proportionally 270×126.72px with CLS zero. Reduced motion loads no GSAP chunks and has no motion. Build passed.
+  - Commit: pending motion refinement commit.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
