@@ -25,9 +25,9 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
 
 - [x] **2. Build the presentation content** — completed
-  - Route: delegated direct (`gentle-ai-worker`, then independent verification).
-  - Evidence: seven sections, all 20 source practice bullets, local assets, responsive styling, and accessible structure completed. Writer and independent `npm run build` passed. Source review verified copy, contact links, eight local assets, no remote URLs or premature motion/scripts, and responsive CSS foundations. Bounded static-`dist/` Chromium/CDP screenshots at 1440×900 and 390×844 confirmed the corrected hero/mark layout, no horizontal overflow, eight decoded images, and legible text; all stage caps and cleanup passed.
-  - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
+  - Route: inline CSS correction, then independent verification.
+  - Evidence: desktop identity, what, approach, purpose, and closing panels measured 100svh and centered their content at 1440×900. Practices measured 1,146px from its content. At 390×844, the existing mobile minimums remain without the new 100svh rule; content is readable with no overflow. Build and bounded Chromium/CDP visual verification passed.
+  - Commit: pending correction commit.
 
 - [x] **3. Add motion and verify** — completed
   - Route: delegated direct (`gentle-ai-worker`, then verification as required by native assessment).
@@ -56,6 +56,8 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
 - 2026-09-24: Independent runtime verification passed normal desktop/mobile motion but found the global image display rule overriding the header logo’s `hidden` attribute in reduced-motion and no-JS paths.
 - 2026-09-24: Added the narrow header-logo-specific `[hidden]` CSS correction and cleared `hidden` before GSAP controls normal-motion opacity.
 - 2026-09-24: Final bounded Chromium/CDP verification passed normal motion, reduced motion, no-JS content visibility, and build. Task 3 is accepted.
+- 2026-09-24: User requested a desktop full-screen rhythm correction: narrative sections must fill the viewport while practices remains naturally taller and mobile remains flexible.
+- 2026-09-24: The desktop correction passed bounded Chromium/CDP verification. Narrative panels measure 100svh; practices stays content-driven; mobile retains its existing flexible minimums without overflow.
 
 ## Next step
-Presentation implementation is complete. Await explicit user direction for a commit or further changes.
+Commit the verified desktop rhythm correction and restart the local preview server.
