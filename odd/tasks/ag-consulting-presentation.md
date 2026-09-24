@@ -36,7 +36,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Evidence: independent desktop/mobile runtime verification confirmed normal motion, post-hero logo reveal, 18 visible entrance targets, no overflow, and successful build. Reduced-motion/no-JS verification found the header logo visually visible at the hero despite its `hidden` attribute because the global image display rule overrides it.
   - Evidence: base motion and interaction behavior is verified. User authorized a second, motion-only iteration: more noticeable but smooth editorial hero sequencing, heading-word stagger, practice icon/card staging, and restrained illustration parallax. Preserve desktop snap, reduced motion, mobile behavior, and no-JS content visibility.
   - Evidence: final Chromium/CDP verification passed. Hero timeline, heading/card/icon/list staggers, desktop parallax, and soft snap work without overflow or errors. The hero logo is proportionally 270×126.72px with CLS zero. Reduced motion loads no GSAP chunks and has no motion. Build passed.
-  - Commit: pending motion refinement commit.
+  - Commit: `851f138` — `feat: enhance presentation motion`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
