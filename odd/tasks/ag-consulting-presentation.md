@@ -22,12 +22,12 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Route: delegated direct (`gentle-ai-explore`, `gentle-ai-worker`, then independent verification).
   - Trigger: the task required understanding and creating multiple project/configuration files.
   - Evidence: static Astro scaffold, local runtime assets, strict TypeScript, and baseline page/styles completed. `npm install` and writer `npm run build` passed; independent `npm run build` passed. The authorized `.gitignore` rules now hide only `node_modules/`, `.astro/`, and `dist/`; independent Git-status verification passed. `npm install` reported 3 dependency vulnerabilities (1 low, 1 high, 1 critical), intentionally outside this task scope.
-  - Commit: pending explicit user authorization.
+  - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
 
 - [x] **2. Build the presentation content** — completed
   - Route: delegated direct (`gentle-ai-worker`, then independent verification).
   - Evidence: seven sections, all 20 source practice bullets, local assets, responsive styling, and accessible structure completed. Writer and independent `npm run build` passed. Source review verified copy, contact links, eight local assets, no remote URLs or premature motion/scripts, and responsive CSS foundations. Bounded static-`dist/` Chromium/CDP screenshots at 1440×900 and 390×844 confirmed the corrected hero/mark layout, no horizontal overflow, eight decoded images, and legible text; all stage caps and cleanup passed.
-  - Commit: pending explicit user authorization.
+  - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
 
 - [x] **3. Add motion and verify** — completed
   - Route: delegated direct (`gentle-ai-worker`, then verification as required by native assessment).
@@ -35,7 +35,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Checks: build succeeds; interactions and responsive behavior are inspected.
   - Evidence: independent desktop/mobile runtime verification confirmed normal motion, post-hero logo reveal, 18 visible entrance targets, no overflow, and successful build. Reduced-motion/no-JS verification found the header logo visually visible at the hero despite its `hidden` attribute because the global image display rule overrides it.
   - Evidence: final bounded Chromium/CDP runtime verification passed. Normal motion keeps the logo visually hidden at top and visibly reveals it past the hero. Reduced motion keeps all content visible, runs no GSAP chunks or animations, and changes the logo visibility without animation. No-JS content stays immediately visible; the small header logo remains hidden because its scroll reveal requires JavaScript, while the large hero logo remains available.
-  - Commit: pending explicit user authorization.
+  - Commit: `3a020c3` — `feat: build AG Consulting presentation`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
