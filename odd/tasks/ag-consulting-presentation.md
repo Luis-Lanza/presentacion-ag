@@ -38,6 +38,11 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Evidence: final Chromium/CDP verification passed. Hero timeline, heading/card/icon/list staggers, desktop parallax, and soft snap work without overflow or errors. The hero logo is proportionally 270×126.72px with CLS zero. Reduced motion loads no GSAP chunks and has no motion. Build passed.
   - Commit: `851f138` — `feat: enhance presentation motion`.
 
+- [x] **4. Add digital transformation practice** — completed
+  - Route: delegated approved-asset replacement, then independent verification.
+  - Evidence: user-approved `digital-marketing.png` replaced the `TD` marker with Spanish alt text. Source, runtime, and generated asset copies have identical hashes. Desktop 3×2 and mobile single-column layouts, normal/reduced/no-JS behavior, build, and Chromium/CDP visual checks passed without clipping or overflow.
+  - Commit: pending explicit user authorization.
+
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
 - 2026-09-24: Completed delegated baseline mapping. `presentacion_asesoramiento.md` remains the copy source of truth; the approved V6 mockup provides visual direction only. Local assets cover hero, closing, logo, and all five practice icons.

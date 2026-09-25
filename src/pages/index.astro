@@ -55,6 +55,19 @@ const practices = [
       'Creación de Tableros de Control.',
     ],
   },
+  {
+    title: 'Transformación Digital y Marketing Digital',
+    icon: '/assets/icons/digital-marketing.png',
+    iconAlt: 'Icono de marketing digital',
+    items: [
+      'Digitalización, automatización y desarrollo de soluciones empresariales.',
+      'Integración de sistemas, herramientas de gestión y CRM.',
+      'Desarrollo de tableros de control e indicadores de gestión.',
+      'Desarrollo de landing pages, formularios y canales de captación.',
+      'Gestión de campañas publicitarias en Meta Ads.',
+      'Generación, seguimiento y medición de oportunidades comerciales.',
+    ],
+  },
 ];
 ---
 
@@ -144,10 +157,10 @@ const practices = [
           <h2 id="practices-title">Prácticas de Consultoría</h2>
         </div>
         <div class="practice-grid">
-          {practices.map((practice, index) => (
-            <article class:list={['practice-card', index === 4 && 'practice-card-wide']}>
+          {practices.map((practice) => (
+            <article class="practice-card">
               <div class="practice-card-heading">
-                <img src={practice.icon} alt="" loading="lazy" />
+                <img src={practice.icon} alt={practice.iconAlt ?? ''} loading="lazy" />
                 <h3>{practice.title}</h3>
               </div>
               <ul>
