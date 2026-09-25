@@ -69,7 +69,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Route: user-directed inline CSS correction; no delegation.
   - Evidence: widened the title track relative to the logo, reduced desktop title scale to fit it, and tightened the gap. Opening now uses dynamic viewport height (`100dvh`) so the next slide cannot appear inside the active first viewport.
   - Checks: `npm run build` and `git diff --check` passed. No delegated/browser visual check was run at the user's instruction to work inline.
-  - Commit: pending explicit user authorization.
+  - Commit: `67b5f81` — `fix: prevent opening slide overlap`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
