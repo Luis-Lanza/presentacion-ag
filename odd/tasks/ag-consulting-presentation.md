@@ -41,7 +41,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
 - [x] **4. Add digital transformation practice** — completed
   - Route: delegated approved-asset replacement, then independent verification.
   - Evidence: user-approved `digital-marketing.png` replaced the `TD` marker with Spanish alt text. Source, runtime, and generated asset copies have identical hashes. Desktop 3×2 and mobile single-column layouts, normal/reduced/no-JS behavior, build, and Chromium/CDP visual checks passed without clipping or overflow.
-  - Commit: pending explicit user authorization.
+  - Commit: `9a26d69` — `feat: add digital marketing practice`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
