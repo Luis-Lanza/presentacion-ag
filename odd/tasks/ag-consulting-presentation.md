@@ -63,7 +63,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Route: delegated layout correction.
   - Evidence: desktop opening now has large `ASESORAMIENTO` at left and AG Consulting logo at right; red eyebrow and opening illustration are absent. Mobile stacks title/logo fluidly and the existing entrance behavior remains.
   - Checks: user explicitly requested no verification commands or visual review.
-  - Commit: pending push.
+  - Commit: `9c4c880` — `feat: recompose opening slide`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
