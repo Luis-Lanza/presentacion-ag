@@ -59,6 +59,12 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Checks: user explicitly requested no visual verification; delegated build passed.
   - Commit: `f2732e9` — `feat: simplify opening slide`.
 
+- [x] **8. Recompose opening slide** — completed
+  - Route: delegated layout correction.
+  - Evidence: desktop opening now has large `ASESORAMIENTO` at left and AG Consulting logo at right; red eyebrow and opening illustration are absent. Mobile stacks title/logo fluidly and the existing entrance behavior remains.
+  - Checks: user explicitly requested no verification commands or visual review.
+  - Commit: pending push.
+
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
 - 2026-09-24: Completed delegated baseline mapping. `presentacion_asesoramiento.md` remains the copy source of truth; the approved V6 mockup provides visual direction only. Local assets cover hero, closing, logo, and all five practice icons.
