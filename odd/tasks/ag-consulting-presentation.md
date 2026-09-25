@@ -48,11 +48,10 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Evidence: full-bleed robotics panel appears between Purpose and Contact/Thanks with approved robot art, exact Spanish capabilities, and eight-screen numbering. Desktop uses a 522×520px warm inset image panel with red accent and visible parallax; mobile hides the fixed header logo, keeps all capabilities unobstructed, and has no overflow. Build, reduced-motion, no-JS, desktop/mobile visual, and asset-parity checks passed.
   - Commit: `1fffde6` — `feat: add industrial robotics section`.
 
-- [ ] **6. Deploy to GitHub Pages** — in progress
-  - Route: delegated deployment configuration, then independent build verification.
-  - Configure Astro `site`/`base` for `https://luis-lanza.github.io/presentacion-ag/`, make runtime public-asset URLs base-aware, and add a least-privilege GitHub Pages Actions workflow that deploys on pushes to `master`.
-  - Checks: production build succeeds with the Pages base path; workflow syntax and generated asset URLs are inspected. Push to trigger GitHub deployment after commit.
-  - Commit: pending explicit user authorization.
+- [x] **6. Deploy to GitHub Pages** — completed
+  - Route: delegated deployment configuration, independent build/workflow verification, then live Actions deployment.
+  - Evidence: Astro uses `site` `https://luis-lanza.github.io` and `/presentacion-ag/` base; all generated public and `_astro` URLs carry that prefix. The official GitHub Pages workflow uses build artifact deployment on `master` push/manual dispatch with the required minimal Pages/OIDC permissions. GitHub Pages was enabled with Actions as source and run `36159730285` completed build and deploy successfully. Live URL fetch confirms the deployed HTML and base-aware assets.
+  - Commit: `950345a` — `ci: deploy presentation to GitHub Pages`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
