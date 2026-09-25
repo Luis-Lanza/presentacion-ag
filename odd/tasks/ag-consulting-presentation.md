@@ -43,6 +43,11 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Evidence: user-approved `digital-marketing.png` replaced the `TD` marker with Spanish alt text. Source, runtime, and generated asset copies have identical hashes. Desktop 3×2 and mobile single-column layouts, normal/reduced/no-JS behavior, build, and Chromium/CDP visual checks passed without clipping or overflow.
   - Commit: `9a26d69` — `feat: add digital marketing practice`.
 
+- [x] **5. Add industrial robotics section** — completed
+  - Route: delegated multi-file implementation, then independent verification.
+  - Evidence: full-bleed robotics panel appears between Purpose and Contact/Thanks with approved robot art, exact Spanish capabilities, and eight-screen numbering. Desktop uses a 522×520px warm inset image panel with red accent and visible parallax; mobile hides the fixed header logo, keeps all capabilities unobstructed, and has no overflow. Build, reduced-motion, no-JS, desktop/mobile visual, and asset-parity checks passed.
+  - Commit: pending explicit user authorization.
+
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
 - 2026-09-24: Completed delegated baseline mapping. `presentacion_asesoramiento.md` remains the copy source of truth; the approved V6 mockup provides visual direction only. Local assets cover hero, closing, logo, and all five practice icons.

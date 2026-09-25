@@ -62,6 +62,8 @@ main {
 .motion-enabled .approach-copy,
 .motion-enabled .practice-card,
 .motion-enabled .purpose-copy,
+.motion-enabled .robotics-copy,
+.motion-enabled .robotics-art,
 .motion-enabled .closing-copy,
 .motion-enabled .closing-art {
   visibility: hidden;
@@ -401,6 +403,87 @@ h3 {
   font-size: clamp(1.75rem, 4.3vw, 3.6rem);
 }
 
+.robotics {
+  display: grid;
+  min-height: auto;
+  align-items: center;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.robotics-frame {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+
+.robotics .eyebrow { color: #ff777b; }
+.robotics-copy h2 {
+  max-width: 12ch;
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.6rem, 7vw, 5.6rem);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 1.03;
+}
+
+.robotics .lead {
+  max-width: 38ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.5;
+}
+
+.robotics-capabilities {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.robotics-capabilities li {
+  position: relative;
+  padding: 0.6rem 0 0.6rem 1.1rem;
+  border-top: 1px solid #45474a;
+  color: #f0f0ee;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.robotics-capabilities li::before {
+  position: absolute;
+  top: 1.15rem;
+  left: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--accent);
+  content: '';
+}
+
+.robotics-closing {
+  max-width: 39ch;
+  margin: 1.25rem 0 0;
+  color: #c2c2c2;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.robotics-art {
+  display: grid;
+  min-height: 16rem;
+  place-items: center;
+}
+
+.robotics-art img {
+  width: 100%;
+  max-height: 27rem;
+  object-fit: contain;
+}
+
+.robotics .section-index { color: #c2c2c2; }
+
 .closing {
   min-height: 85vh;
   color: var(--white);
@@ -452,6 +535,10 @@ h3 {
 
 .closing .section-index { color: #c2c2c2; }
 
+@media (max-width: 759px) {
+  .site-header { display: none; }
+}
+
 @media (min-width: 760px) {
   .section-shell { min-height: 82vh; }
 
@@ -459,6 +546,7 @@ h3 {
   .what,
   .approach,
   .purpose,
+  .robotics,
   .closing {
     min-height: 100svh;
   }
@@ -505,6 +593,14 @@ h3 {
 
   .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
   .purpose-frame { grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: 4rem; }
+  .robotics-frame { grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: 3rem; }
+  .robotics-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .robotics-art {
+    min-height: 30rem;
+    padding: clamp(1.5rem, 3vw, 3rem);
+    border: 1px solid rgb(229 34 43 / 55%);
+    background: #f5f1e9;
+  }
   .closing-frame { grid-template-columns: 0.9fr 1.1fr; gap: 5vw; }
   .closing-art { min-height: 360px; height: min(60vh, 500px); }
   .closing-art img { min-height: 100%; }
