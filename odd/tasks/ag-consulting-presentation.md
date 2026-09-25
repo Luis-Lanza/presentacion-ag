@@ -65,6 +65,12 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Checks: user explicitly requested no verification commands or visual review.
   - Commit: `9c4c880` — `feat: recompose opening slide`.
 
+- [x] **9. Correct opening overlap** — completed
+  - Route: user-directed inline CSS correction; no delegation.
+  - Evidence: widened the title track relative to the logo, reduced desktop title scale to fit it, and tightened the gap. Opening now uses dynamic viewport height (`100dvh`) so the next slide cannot appear inside the active first viewport.
+  - Checks: `npm run build` and `git diff --check` passed. No delegated/browser visual check was run at the user's instruction to work inline.
+  - Commit: pending explicit user authorization.
+
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
 - 2026-09-24: Completed delegated baseline mapping. `presentacion_asesoramiento.md` remains the copy source of truth; the approved V6 mockup provides visual direction only. Local assets cover hero, closing, logo, and all five practice icons.

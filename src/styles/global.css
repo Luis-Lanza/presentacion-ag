@@ -102,8 +102,10 @@ a:focus-visible {
 
 .opening {
   display: grid;
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
-  min-height: 100svh;
+  min-height: 100dvh;
   align-items: center;
   background: var(--paper);
 }
@@ -548,12 +550,12 @@ h3 {
   }
 
   .opening-copy {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
   }
 
   .opening-title {
-    font-size: clamp(3.25rem, 5.3vw, 5rem);
+    font-size: clamp(2.5rem, 4vw, 4rem);
   }
   .shape-mark { right: 2rem; bottom: 5rem; width: 6rem; height: 6rem; }
 
