@@ -57,7 +57,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Route: delegated layout refinement.
   - Evidence: removed the redundant `CONSULTING` heading and opening illustration; retained exact presentation eyebrow and enlarged the sole AG Consulting logo up to 560px in a centered, full-viewport, responsive layout. Removed obsolete GSAP targets/CSS while retaining logo entrance and reduced-motion/no-JS visibility.
   - Checks: user explicitly requested no visual verification; delegated build passed.
-  - Commit: pending push.
+  - Commit: `f2732e9` — `feat: simplify opening slide`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
