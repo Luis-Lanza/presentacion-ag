@@ -46,7 +46,7 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
 - [x] **5. Add industrial robotics section** — completed
   - Route: delegated multi-file implementation, then independent verification.
   - Evidence: full-bleed robotics panel appears between Purpose and Contact/Thanks with approved robot art, exact Spanish capabilities, and eight-screen numbering. Desktop uses a 522×520px warm inset image panel with red accent and visible parallax; mobile hides the fixed header logo, keeps all capabilities unobstructed, and has no overflow. Build, reduced-motion, no-JS, desktop/mobile visual, and asset-parity checks passed.
-  - Commit: pending explicit user authorization.
+  - Commit: `1fffde6` — `feat: add industrial robotics section`.
 
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
