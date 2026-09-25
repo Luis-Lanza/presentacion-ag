@@ -3,11 +3,12 @@ import '../styles/global.css';
 
 const title = 'CONSULTING';
 const description = 'Presentación de asesoramiento.';
+const assetBase = import.meta.env.BASE_URL;
 
 const practices = [
   {
     title: 'Liderazgo',
-    icon: '/assets/icons/leadership.png',
+    icon: `${assetBase}assets/icons/leadership.png`,
     items: [
       'Diseño del plan estrátegico de la empresa.',
       'Gestión de cambio: Como afrontar cambios tecnológicos, de mercado, modelo de negocios, organizaciones, etc.',
@@ -16,7 +17,7 @@ const practices = [
   },
   {
     title: 'Cultura Organizacional',
-    icon: '/assets/icons/organizational-culture.png',
+    icon: `${assetBase}assets/icons/organizational-culture.png`,
     items: [
       'Compromiso del empleado: Involucramiento tanto en el trabajo como en los objetivos y valores de la empresa.',
       'Gestion integral del talento de la organizacion.',
@@ -25,7 +26,7 @@ const practices = [
   },
   {
     title: 'Optimización de Ventas',
-    icon: '/assets/icons/sales-optimization.png',
+    icon: `${assetBase}assets/icons/sales-optimization.png`,
     items: [
       'Estudios de mercado.',
       'Lanzamiento de nuevos productos.',
@@ -35,7 +36,7 @@ const practices = [
   },
   {
     title: 'Gestión de la experiencia del cliente',
-    icon: '/assets/icons/customer-experience.png',
+    icon: `${assetBase}assets/icons/customer-experience.png`,
     items: [
       'Retención de clientes.',
       'Crear fidelidad a través de los puntos de contacto con los clientes.',
@@ -44,7 +45,7 @@ const practices = [
   },
   {
     title: 'Eficiencia operacional',
-    icon: '/assets/icons/operational-efficiency.png',
+    icon: `${assetBase}assets/icons/operational-efficiency.png`,
     items: [
       'Evaluación de la operatividad de la empresa.',
       'Diagramas de procesos.',
@@ -57,7 +58,7 @@ const practices = [
   },
   {
     title: 'Transformación Digital y Marketing Digital',
-    icon: '/assets/icons/digital-marketing.png',
+    icon: `${assetBase}assets/icons/digital-marketing.png`,
     iconAlt: 'Icono de marketing digital',
     items: [
       'Digitalización, automatización y desarrollo de soluciones empresariales.',
@@ -78,12 +79,12 @@ const practices = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f5f4f0" />
-    <link rel="icon" type="image/jpeg" href="/assets/brand/ag-consulting-logo.jpeg" />
+    <link rel="icon" type="image/jpeg" href={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} />
     <title>{title}</title>
   </head>
   <body>
     <header class="site-header" aria-label="AG Consulting">
-      <img class="header-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" hidden />
+      <img class="header-logo" src={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} alt="AG Consulting" hidden />
     </header>
     <main>
       <section class="opening section-shell" aria-labelledby="opening-title">
@@ -91,10 +92,10 @@ const practices = [
         <div class="opening-copy">
           <p class="eyebrow">Presentación de asesoramiento</p>
           <h1 id="opening-title">CONSULTING</h1>
-          <img class="opening-logo" src="/assets/brand/ag-consulting-logo.jpeg" alt="AG Consulting" width="1600" height="751" />
+          <img class="opening-logo" src={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} alt="AG Consulting" width="1600" height="751" />
         </div>
         <div class="opening-art">
-          <img src="/assets/illustrations/hero.png" alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
+          <img src={`${assetBase}assets/illustrations/hero.png`} alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
         </div>
         </div>
         <span class="section-index" aria-hidden="true">01 / 08</span>
@@ -201,7 +202,7 @@ const practices = [
             <p class="robotics-closing">Automatización aplicada para lograr procesos más consistentes, seguros y eficientes.</p>
           </div>
           <div class="robotics-art">
-            <img src="/assets/illustrations/industrial-robotics.png" alt="Brazo robótico industrial trabajando con cajas sobre una línea de producción" loading="lazy" />
+            <img src={`${assetBase}assets/illustrations/industrial-robotics.png`} alt="Brazo robótico industrial trabajando con cajas sobre una línea de producción" loading="lazy" />
           </div>
         </div>
         <span class="section-index" aria-hidden="true">07 / 08</span>
@@ -218,7 +219,7 @@ const practices = [
           </address>
         </div>
         <div class="closing-art">
-          <img src="/assets/illustrations/closing.png" alt="Escalinata arquitectónica con un recorrido rojo ascendente" loading="lazy" />
+          <img src={`${assetBase}assets/illustrations/closing.png`} alt="Escalinata arquitectónica con un recorrido rojo ascendente" loading="lazy" />
         </div>
         </div>
         <span class="section-index" aria-hidden="true">08 / 08</span>
