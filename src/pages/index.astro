@@ -87,16 +87,12 @@ const practices = [
       <img class="header-logo" src={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} alt="AG Consulting" hidden />
     </header>
     <main>
-      <section class="opening section-shell" aria-labelledby="opening-title">
+      <section class="opening section-shell" aria-label="Presentación de asesoramiento">
         <div class="editorial-frame opening-frame">
-        <div class="opening-copy">
-          <p class="eyebrow">Presentación de asesoramiento</p>
-          <h1 id="opening-title">CONSULTING</h1>
-          <img class="opening-logo" src={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} alt="AG Consulting" width="1600" height="751" />
-        </div>
-        <div class="opening-art">
-          <img src={`${assetBase}assets/illustrations/hero.png`} alt="Composición arquitectónica en blanco y negro atravesada por una línea roja ascendente" />
-        </div>
+          <div class="opening-copy">
+            <p class="eyebrow">Presentación de asesoramiento</p>
+            <img class="opening-logo" src={`${assetBase}assets/brand/ag-consulting-logo.jpeg`} alt="AG Consulting" width="1600" height="751" />
+          </div>
         </div>
         <span class="section-index" aria-hidden="true">01 / 08</span>
       </section>
@@ -248,9 +244,7 @@ const practices = [
         headerLogo.hidden = false;
         const hero = document.querySelector('.opening');
         const heroEyebrow = document.querySelector('.opening .eyebrow');
-        const heroHeading = document.querySelector('.opening h1');
         const heroLogo = document.querySelector('.opening-logo');
-        const heroArtwork = document.querySelector('.opening-art');
         const revealTargets = gsap.utils.toArray(
           '.identity-content, .what-content, .approach-copy, .purpose-copy, .robotics-copy, .robotics-art, .closing-copy, .closing-art',
         );
@@ -274,7 +268,6 @@ const practices = [
         gsap.set([heroEyebrow, heroLogo, ...practiceTitles], { autoAlpha: 0, y: 8 });
         gsap.set(practiceIcons, { autoAlpha: 0, y: 6, scale: 0.97 });
         gsap.set(practiceItems, { autoAlpha: 0, y: 6 });
-        gsap.set(heroArtwork, { autoAlpha: 0, y: 12 });
         document.documentElement.classList.add('motion-enabled');
 
         const heroTimeline = gsap.timeline({
@@ -282,14 +275,7 @@ const practices = [
         });
         heroTimeline
           .to(heroEyebrow, { autoAlpha: 1, y: 0, duration: 0.65 })
-          .to(headingGroups[0].words, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: { each: 0.08, amount: 0.24 },
-          }, '-=0.24')
-          .to(heroLogo, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.28')
-          .to(heroArtwork, { autoAlpha: 1, y: 0, duration: 0.85 }, '-=0.48');
+          .to(heroLogo, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.28');
 
         gsap.to(headerLogo, {
           autoAlpha: 1,
@@ -304,7 +290,6 @@ const practices = [
         });
 
         headingGroups
-          .filter(({ heading }) => heading !== heroHeading)
           .forEach(({ heading, words }) => {
           gsap.to(words, {
             autoAlpha: 1,
@@ -371,7 +356,7 @@ const practices = [
 
         const parallaxMedia = gsap.matchMedia();
         parallaxMedia.add('(min-width: 760px)', () => {
-          gsap.utils.toArray('.opening-art img, .robotics-art img, .closing-art img').forEach((artwork) => {
+          gsap.utils.toArray('.robotics-art img, .closing-art img').forEach((artwork) => {
             gsap.to(artwork, {
               y: 16,
               ease: 'none',

@@ -53,6 +53,12 @@ The approved Mockup V6 needs to become a maintainable, responsive presentation s
   - Evidence: Astro uses `site` `https://luis-lanza.github.io` and `/presentacion-ag/` base; all generated public and `_astro` URLs carry that prefix. The official GitHub Pages workflow uses build artifact deployment on `master` push/manual dispatch with the required minimal Pages/OIDC permissions. GitHub Pages was enabled with Actions as source and run `36159730285` completed build and deploy successfully. Live URL fetch confirms the deployed HTML and base-aware assets.
   - Commit: `950345a` — `ci: deploy presentation to GitHub Pages`.
 
+- [x] **7. Simplify opening slide** — completed
+  - Route: delegated layout refinement.
+  - Evidence: removed the redundant `CONSULTING` heading and opening illustration; retained exact presentation eyebrow and enlarged the sole AG Consulting logo up to 560px in a centered, full-viewport, responsive layout. Removed obsolete GSAP targets/CSS while retaining logo entrance and reduced-motion/no-JS visibility.
+  - Checks: user explicitly requested no visual verification; delegated build passed.
+  - Commit: pending push.
+
 ## Progress
 - 2026-09-24: Resumed in a new Pi session. Git now resolves correctly at the repository root; no source implementation exists yet.
 - 2026-09-24: Completed delegated baseline mapping. `presentacion_asesoramiento.md` remains the copy source of truth; the approved V6 mockup provides visual direction only. Local assets cover hero, closing, logo, and all five practice icons.
