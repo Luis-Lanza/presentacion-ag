@@ -100,33 +100,104 @@ a:focus-visible {
   margin: auto;
 }
 
-.opening {
+.opening.section-shell {
   display: grid;
-  height: 100vh;
-  height: 100dvh;
+  height: auto;
   min-height: 100vh;
   min-height: 100dvh;
   align-items: center;
-  background: var(--paper);
+  padding-block: clamp(2.5rem, 8vh, 6rem);
+  padding-inline: clamp(1.25rem, 4vw, 5.5rem);
+  isolation: isolate;
+  background: #cfcdc7;
+}
+
+.opening.section-shell::after {
+  position: absolute;
+  z-index: 0;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  width: clamp(4rem, 16vw, 12rem);
+  border-top: 1px solid var(--accent);
+  content: '';
+  pointer-events: none;
+}
+
+.opening-paper {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.opening-paper::before,
+.opening-paper::after {
+  position: absolute;
+  content: '';
+  box-shadow: 0 12px 32px rgb(48 45 40 / 12%);
+}
+
+.opening-paper::before {
+  top: -55%;
+  right: -35%;
+  width: 110%;
+  height: 130%;
+  border-radius: 0 0 0 42%;
+  background: #dbd9d3;
+  transform: rotate(-18deg);
+}
+
+.opening-paper::after {
+  bottom: -65%;
+  left: -25%;
+  width: 150%;
+  height: 100%;
+  border-radius: 48% 32% 0 0;
+  background: #e3e1db;
+  transform: rotate(-12deg);
 }
 
 .opening-frame {
+  position: relative;
+  z-index: 1;
   display: grid;
+  width: min(100%, 82rem);
   grid-template-columns: 1fr;
+  /* Blend the whole transparent foreground group with the paper layers.
+     The JPEG's white becomes invisible even when GSAP transforms the image;
+     no isolated logo wrapper can trap its blend against a white backdrop. */
+  mix-blend-mode: multiply;
+}
+
+.opening .section-index {
+  z-index: 1;
+  color: #50514f;
 }
 
 .opening-copy {
   display: grid;
   align-items: center;
-  gap: clamp(2rem, 8vw, 5rem);
+  gap: clamp(1.75rem, 5vw, 3rem);
+}
+
+.opening-text {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
 }
 
 .opening-title {
   margin: 0;
-  font-size: clamp(2.5rem, 11vw, 4.25rem);
+  font-size: clamp(2rem, 7vw, 3.25rem);
   font-weight: 600;
-  letter-spacing: -0.075em;
-  line-height: 0.98;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.opening-title .opening-line,
+.motion-enabled .opening-title > .opening-line {
+  display: block;
 }
 
 .eyebrow {
@@ -152,10 +223,19 @@ h3 {
   font-family: 'Avenir Next', Avenir, Arial, sans-serif;
 }
 
+.opening-brand {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(14rem, 60vw, 24rem);
+  padding: clamp(1rem, 2vw, 2rem);
+  place-items: center;
+}
+
 .opening-logo {
-  width: min(560px, 100%);
+  width: 100%;
   height: auto;
-  mix-blend-mode: multiply;
+  justify-self: center;
 }
 
 .closing-art img {
@@ -550,13 +630,20 @@ h3 {
   }
 
   .opening-copy {
-    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
-    gap: clamp(1.5rem, 3vw, 3rem);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
   }
 
   .opening-title {
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2rem, 4.8vw, 5rem);
   }
+
+  .opening-brand {
+    height: 66vh;
+    height: 66dvh;
+    min-height: 20rem;
+  }
+
   .shape-mark { right: 2rem; bottom: 5rem; width: 6rem; height: 6rem; }
 
   .identity-frame {
@@ -589,6 +676,26 @@ h3 {
   .closing-frame { grid-template-columns: 0.9fr 1.1fr; gap: 5vw; }
   .closing-art { min-height: 360px; height: min(60vh, 500px); }
   .closing-art img { min-height: 100%; }
+}
+
+@media (max-height: 600px) {
+  .opening {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-block: 2rem 3.5rem;
+  }
+
+  .opening-copy { gap: 1.5rem; }
+  .opening-title { font-size: clamp(2rem, 4.8vw, 3.5rem); }
+}
+
+@media (min-width: 760px) and (max-height: 600px) {
+  .opening-brand {
+    height: auto;
+    min-height: max(16rem, 66vh);
+    min-height: max(16rem, 66dvh);
+  }
 }
 
 @media (min-width: 1100px) {
