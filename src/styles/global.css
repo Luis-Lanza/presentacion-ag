@@ -283,9 +283,8 @@ h3 {
     var(--reading-stone);
 }
 
-/* Measure the entire reading cluster, as in purpose. Take the short shadow
-   clearances from existing padding so the denser sections keep their fit budget.
-   Spare viewport height alone grows the two sheets; content is never cropped. */
+/* Preserve the reading cluster and its fit budget. Only spare viewport
+   height is available to the full-width sheets; copy is never cropped. */
 .identity.section-shell,
 .what.section-shell {
   display: grid;
@@ -319,9 +318,9 @@ h3 {
   margin-top: 1rem;
 }
 
-/* Full-width curved sheets occupy only the unused rows. Clipping bounds the
-   shadows to 6px, inside the 8px clearance, not across the uniform reading row.
-   Bottom padding remains separate from the lower sheet for the index/accent. */
+/* Like Purpose/Closing, sheets reach both edges in spare rows only.
+   The whole reading row remains stone; clipped, 6px shadows fit within its
+   existing clearance. Crowded viewports may contract decorative rows to zero. */
 .identity::before,
 .identity::after,
 .what::before,
@@ -330,6 +329,7 @@ h3 {
   z-index: 0;
   grid-column: 1;
   align-self: stretch;
+  min-height: 0;
   margin-inline: calc(-1 * var(--sheet-gutter));
   content: '';
   pointer-events: none;
@@ -339,7 +339,6 @@ h3 {
 .what::before {
   grid-row: 1;
   margin-top: calc(var(--sheet-clearance) - var(--sheet-top));
-  border-radius: 0 0 0 100% / 0 0 0 70%;
   background: #aaa79f;
   box-shadow: 0 2px 3px rgb(48 45 40 / 16%);
   clip-path: inset(0 0 -6px);
@@ -348,10 +347,36 @@ h3 {
 .identity::after,
 .what::after {
   grid-row: 3;
-  border-radius: 0 100% 0 0 / 0 65% 0 0;
   background: #e1ded7;
   box-shadow: 0 -2px 3px rgb(48 45 40 / 14%);
   clip-path: inset(-6px 0 0);
+}
+
+/* Reverse Purpose's single-corner sweeps: upper right, lower left. */
+.identity::before {
+  border-radius: 0 0 100% 0 / 0 0 70% 0;
+}
+
+.identity::after {
+  border-radius: 100% 0 0 0 / 65% 0 0 0;
+}
+
+@media (max-height: 650px) {
+  /* Keep the upper sheet flat beneath the fixed logo on short screens;
+     only the left edge curves, leaving the reading row and lower sweep intact. */
+  .identity::before {
+    border-radius: 0 0 0 100% / 0 0 0 70%;
+  }
+}
+
+/* Two unequal corners meet across the width, rather than the references'
+   single-corner sweep. The lower crest shifts to the opposite side. */
+.what::before {
+  border-radius: 0 0 72% 28% / 0 0 85% 35%;
+}
+
+.what::after {
+  border-radius: 68% 32% 0 0 / 40% 90% 0 0;
 }
 
 .identity .identity-frame {
@@ -977,6 +1002,10 @@ h3 {
   .closing-invitation { font-size: clamp(1.625rem, 1.9vw, 1.875rem); }
   .closing address { font-size: clamp(1.375rem, 1.5vw, 1.5rem); }
   .closing .contact-icon { width: clamp(6.875rem, 8vw, 7.5rem); height: clamp(6.875rem, 8vw, 7.5rem); }
+}
+
+@media (min-width: 760px) and (max-height: 650px) {
+  .site-header { top: 0.5rem; }
 }
 
 @media (max-height: 600px) {
