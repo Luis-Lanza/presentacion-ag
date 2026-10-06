@@ -240,12 +240,6 @@ h3 {
   justify-self: center;
 }
 
-.closing-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .section-index {
   position: absolute;
   right: var(--gutter);
@@ -781,56 +775,118 @@ h3 {
 
 .robotics .section-index { color: #c2c2c2; }
 
-.closing {
-  min-height: 85vh;
-  color: var(--white);
-  background: var(--ink);
+.closing.section-shell {
+  --closing-top: clamp(1.5rem, 4svh, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  row-gap: clamp(1rem, 3svh, 2rem);
+  min-height: 100svh;
+  padding-block: var(--closing-top) clamp(3rem, 6svh, 4.5rem);
+  isolation: isolate;
+  color: var(--ink);
+  background: #cfccc5;
+}
+
+/* Paper occupies only the spare rows: no seam or shadow crosses the copy,
+   contact strokes, or focus rings, even when the foreground grows taller. */
+.closing::before,
+.closing::after {
+  position: relative;
+  z-index: 0;
+  grid-column: 1;
+  align-self: stretch;
+  margin-inline: calc(-1 * var(--gutter));
+  content: '';
+  pointer-events: none;
+}
+
+.closing::before {
+  grid-row: 1;
+  margin-top: calc(-1 * var(--closing-top));
+  border-radius: 0 0 0 100% / 0 0 0 70%;
+  background: #aaa79f;
+  box-shadow: 0 2px 3px rgb(48 45 40 / 16%);
+  clip-path: inset(0 0 -6px);
+}
+
+.closing::after {
+  grid-row: 3;
+  border-radius: 0 100% 0 0 / 0 65% 0 0;
+  background: #e1ded7;
+  box-shadow: 0 -2px 3px rgb(48 45 40 / 14%);
+  clip-path: inset(-6px 0 0);
 }
 
 .closing-frame {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 2;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
 }
 
-.closing .eyebrow { color: #ff777b; }
+.closing-copy {
+  min-width: 0;
+}
+
 .closing h2 {
-  margin-bottom: 2rem;
-  font-size: clamp(3.5rem, 11vw, 7rem);
-  font-weight: 700;
-  letter-spacing: -0.08em;
-  line-height: 0.95;
+  max-width: 16ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.closing-invitation {
+  max-width: 36ch;
+  margin-bottom: 0;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.55;
 }
 
 .closing address {
   display: grid;
-  justify-items: start;
-  gap: 0.75rem;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  min-width: 0;
+  justify-items: center;
+  gap: clamp(1.25rem, 4svh, 2.5rem);
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-style: normal;
   line-height: 1.5;
 }
 
 .closing address a {
-  text-decoration-color: #87898c;
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 2.75rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  text-decoration-color: #77746d;
   text-underline-offset: 0.25em;
 }
 
+.closing address a span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.closing .contact-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+}
+
+.closing .contact-accent { stroke: var(--accent); }
 .closing address a:hover { text-decoration-color: var(--accent); }
-.closing-art {
-  min-height: 220px;
-  max-height: 440px;
-  overflow: hidden;
-  background: var(--white);
-}
-
-.closing-art img {
-  min-height: 220px;
-  object-position: center;
-}
-
-.closing .section-index { color: #c2c2c2; }
+.closing .section-index { z-index: 1; color: #50514f; }
 
 @media (max-width: 759px) {
   .site-header { display: none; }
@@ -909,9 +965,8 @@ h3 {
     border: 1px solid rgb(229 34 43 / 55%);
     background: #f5f1e9;
   }
-  .closing-frame { grid-template-columns: 0.9fr 1.1fr; gap: 5vw; }
-  .closing-art { min-height: 360px; height: min(60vh, 500px); }
-  .closing-art img { min-height: 100%; }
+  .closing-frame { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+  .closing .contact-icon { width: clamp(5rem, 7vw, 6.25rem); height: clamp(5rem, 7vw, 6.25rem); }
 }
 
 @media (max-height: 600px) {
