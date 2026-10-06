@@ -279,12 +279,31 @@ const practices = [
     </main>
     <script>
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const header = document.querySelector<HTMLElement>('.site-header');
+      const headerLogo = document.querySelector<HTMLImageElement>('.header-logo');
+      const darkSections = document.querySelectorAll<HTMLElement>('.approach, .robotics');
+      const updateHeaderContrast = () => {
+        const footprint = header.getBoundingClientRect();
+        const x = footprint.left + footprint.width / 2;
+        const y = footprint.top + footprint.height / 2;
+        // Sample the fixed logo's position, not a section's viewport midpoint.
+        const onDark = Array.from(darkSections).some((section) => {
+          const bounds = section.getBoundingClientRect();
+          return x >= bounds.left && x < bounds.right && y >= bounds.top && y < bounds.bottom;
+        });
+        header.toggleAttribute('data-on-dark', onDark);
+      };
+
+      updateHeaderContrast();
+      window.addEventListener('scroll', updateHeaderContrast, { passive: true });
+      window.addEventListener('resize', updateHeaderContrast);
+      headerLogo.addEventListener('load', updateHeaderContrast);
 
       if (reduceMotion.matches) {
-        const headerLogo = document.querySelector('.header-logo');
         const hero = document.querySelector('.opening');
         const updateHeaderLogo = () => {
           headerLogo.hidden = window.scrollY < hero.getBoundingClientRect().height;
+          updateHeaderContrast();
         };
 
         updateHeaderLogo();
@@ -297,8 +316,8 @@ const practices = [
         ]);
 
         gsap.registerPlugin(ScrollTrigger);
-        const headerLogo = document.querySelector('.header-logo');
         headerLogo.hidden = false;
+        updateHeaderContrast();
         const hero = document.querySelector('.opening');
         const heroTitle = document.querySelector('.opening-title');
         const heroLogo = document.querySelector('.opening-logo');
